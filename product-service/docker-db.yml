@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  ecommerce:
+    driver: bridge
+    
+services:
+   db:
+     image: mysql:5.7
+     container_name: database
+     networks:
+       - ecommerce
+     volumes:
+       - D:\ECOMMERCE\sql:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: admin
+       MYSQL_DATABASE: ecommerce
+       MYSQL_USER: admin
+       MYSQL_PASSWORD: admin
+     ports:
+       - '3306:3306'

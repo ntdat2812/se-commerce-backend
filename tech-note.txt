@@ -1,0 +1,11 @@
+account service -> golang
+order service -> spring boot
+product catalog service -> spring boot
+
+
+
+-----------
+
+
+TODO
+design db -> product service -> [catalog, product]
