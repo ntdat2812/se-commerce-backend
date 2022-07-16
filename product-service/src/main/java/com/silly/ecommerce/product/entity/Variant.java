@@ -24,6 +24,15 @@ public class Variant extends BaseEntity {
     @Column(name = "quantity")
     private Double quantity;
 
+    @Column(name = "selling_price")
+    private Double sellingPrice;
+
+    @Column(name = "base_cost")
+    private Double baseCost;
+
+    @Column(name = "img_src")
+    private String imgSrc;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;

@@ -1,25 +1,24 @@
-server:
-  port: 8081
-  servlet:
-    context-path: /order-service/api/v1
-
 spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ecommerce
-    username: root
-    password: 123456
-    hikari:
-      connection-timeout: 30000
-      maximum-pool-size: 30
-      minimum-idle: 5
-      leak-detection-threshold: 30000
-      initialization-fail-timeout: 60000
-      max-lifetime: 1800000
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
 
-  jackson:
-    default-property-inclusion: non_null
+  application:
+    name: se-order-service
+
+  config:
+    import: "optional:consul:"
+
+  cloud:
+    consul:
+      config:
+        format: FILES
+        fail-fast: false
+        enabled: true
+        prefix: config
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}
+        healthCheckPath: ${server.servlet.context-path}/actuator/health
+        healthCheckInterval: 15s
+        prefer-ip-address: true
+        register-health-check: true
+        ip-address: ${spring.cloud.client.ip-address}

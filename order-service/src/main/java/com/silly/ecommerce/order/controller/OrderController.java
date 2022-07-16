@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
-@RequestMapping(BaseConstant.BASE_API_V1 + "/orders")
+@RequestMapping("/orders")
 @RestController
 public class OrderController {
 }
